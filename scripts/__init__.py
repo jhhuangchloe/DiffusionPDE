@@ -1,0 +1,6 @@
+from .generate_burgers import generate_burgers
+from .generate_darcy import generate_darcy
+from .generate_poisson import generate_poisson
+from .generate_helmholtz import generate_helmholtz
+from .generate_ns_nonbounded import generate_ns_nonbounded
+from .generate_ns_bounded import generate_ns_bounded

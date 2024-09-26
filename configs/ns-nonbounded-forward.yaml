@@ -1,0 +1,19 @@
+data:
+  name: 'NS-NonBounded'
+  datapath: 'data/testing/ns-nonbounded.mat'
+  offset: 0
+
+test:
+  pre-trained: 'pretrained-models/pretrained-ns-nonbounded.pkl'
+  iterations: 2000
+
+generate:
+  seed: 0
+  device: 'cuda'
+  batch_size: 1
+  sigma_min: 0.002
+  sigma_max: 80
+  rho: 7
+  zeta_obs_a: 500
+  zeta_obs_u: 0
+  zeta_pde: 1

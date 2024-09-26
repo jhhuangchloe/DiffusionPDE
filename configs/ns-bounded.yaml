@@ -1,0 +1,23 @@
+data:
+  name: 'NS-Bounded'
+  datapath: 'data/testing/ns-bounded/1/v.npy'
+  c_x: 41 # center and radius of the cylinder, may need to be adjusted based on the data
+  c_y: 63
+  radius: 10
+  offset: 0
+
+test:
+  pre-trained: 'pretrained-models/pretrained-ns-bounded.pkl'
+  iterations: 2000
+  problem_type: 'both'
+
+generate:
+  seed: 0
+  device: 'cuda'
+  batch_size: 1
+  sigma_min: 0.002
+  sigma_max: 80
+  rho: 7
+  zeta_obs_a: 250
+  zeta_obs_u: 250
+  zeta_pde: 1
