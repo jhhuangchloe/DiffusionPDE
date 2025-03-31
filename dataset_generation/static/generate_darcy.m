@@ -31,7 +31,7 @@ function generate(N, S)
             % Thresholding to achieve ellipticity
             thresh_a = zeros(S, S);
             thresh_a(norm_a >= 0) = 12;
-            thresh_a(norm_a < 0) = 4;
+            thresh_a(norm_a < 0) = 3;
     
             % Solve PDE: -div(a(x)*grad(p(x))) = f(x)
             lognorm_p = solve_gwf(lognorm_a, f);
