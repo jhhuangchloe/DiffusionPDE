@@ -21,8 +21,8 @@ def get_burger_loss(u, u_GT, mask, device=torch.device('cuda')):
     """Return the loss of the Burgers' equation and the observation loss."""
     u = u.view(1, 1, 128, 128)
     u_GT = u_GT.view(1, 1, 128, 128)
-    deriv_t = torch.tensor([[1], [0], [-1]], dtype=torch.float64, device=device).view(1, 1, 3, 1) / 2 
-    deriv_x = torch.tensor([[1, 0, -1]], dtype=torch.float64, device=device).view(1, 1, 1, 3) / 2 
+    deriv_t = torch.tensor([[-1], [0], [1]], dtype=torch.float64, device=device).view(1, 1, 3, 1) / 2 
+    deriv_x = torch.tensor([[-1, 0, 1]], dtype=torch.float64, device=device).view(1, 1, 1, 3) / 2 
     u_t = F.conv2d(u, deriv_t, padding=(1, 0)) 
     u_x = F.conv2d(u, deriv_x, padding=(0, 1)) 
     u_xx = F.conv2d(u_x, deriv_x, padding=(0, 1))

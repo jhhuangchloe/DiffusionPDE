@@ -34,8 +34,8 @@ def cylinder_index(center, radius, grid_size, device=torch.device('cuda')):
 
 def get_ns_bounded_loss(a, u, a_GT, u_GT, a_mask, u_mask, device=torch.device('cuda')):
     """Return the loss of the bounded NS equation and the observation loss."""
-    deriv_x = torch.tensor([[1, 0, -1]], dtype=torch.float64, device=device).view(1, 1, 1, 3) / 2
-    deriv_y = torch.tensor([[1], [0], [-1]], dtype=torch.float64, device=device).view(1, 1, 3, 1) / 2
+    deriv_x = torch.tensor([[-1, 0, 1]], dtype=torch.float64, device=device).view(1, 1, 1, 3) / 2
+    deriv_y = torch.tensor([[-1], [0], [1]], dtype=torch.float64, device=device).view(1, 1, 3, 1) / 2
     grad_x_next_x = F.conv2d(u, deriv_x, padding=(0, 1))
     grad_x_next_y = F.conv2d(u, deriv_y, padding=(1, 0))
     pde_loss = grad_x_next_x + grad_x_next_y
