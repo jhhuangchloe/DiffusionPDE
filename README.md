@@ -73,6 +73,10 @@ To recover the solution throughout a time interval with sparse sensors, use, e.g
 python3 generate_pde.py --config configs/burgers.yaml
 ```
 
+## Guidance on Guidance Weights
+
+Weights may change depending on the count of observation points. A significant weight can swiftly decrease the error, but an excessively large weight might cause oversaturation and artifacts.
+
 ## License
 
 <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><span property="dct:title">DiffusionPDE: Generative PDE-Solving Under Partial Observation</span> by <span property="cc:attributionName">Jiahe Huang, Guandao Yang, Zichen Wang, Jeong Joon Park</span> is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>.</p>
