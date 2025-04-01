@@ -75,7 +75,7 @@ python3 generate_pde.py --config configs/burgers.yaml
 
 ## Guidance on Guidance Weights
 
-Weights may change depending on the count of observation points. A significant weight can swiftly decrease the error, but an excessively large weight might cause oversaturation and artifacts.
+Weights may change depending on the count of observation points. A significant weight can swiftly decrease the error, but an excessively large weight might cause oversaturation and artifacts. Typically, the weights for forward observation loss terms range from 0.1 to 10 before averaging. The weights of various loss terms associated with the same PDE are affected by the scaling of these loss terms.
 
 ## License
 

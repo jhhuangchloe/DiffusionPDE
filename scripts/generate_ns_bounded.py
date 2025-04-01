@@ -136,8 +136,8 @@ def generate_ns_bounded(config):
         # Compute the loss
         pde_loss, observation_loss_a, observation_loss_u = get_ns_bounded_loss(a_N, u_N, a_GT, u_GT, known_index_a, known_index_u, device=device)
         L_pde = torch.norm(pde_loss, 2)/(128*128)
-        L_obs_a = torch.norm(observation_loss_a, 2)/a_count
-        L_obs_u = torch.norm(observation_loss_u, 2)/u_count
+        L_obs_a = torch.norm(observation_loss_a, 2)
+        L_obs_u = torch.norm(observation_loss_u, 2)
         grad_x_cur_obs_a = torch.autograd.grad(outputs=L_obs_a, inputs=x_cur, retain_graph=True)[0]
         grad_x_cur_obs_u = torch.autograd.grad(outputs=L_obs_u, inputs=x_cur, retain_graph=True)[0]
         grad_x_cur_pde = torch.autograd.grad(outputs=L_pde, inputs=x_cur)[0]

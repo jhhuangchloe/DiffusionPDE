@@ -18,6 +18,6 @@ generate:
   sigma_min: 0.002
   sigma_max: 80
   rho: 7
-  zeta_obs_a: 250
-  zeta_obs_u: 250
+  zeta_obs_a: 0.5
+  zeta_obs_u: 0.5
   zeta_pde: 1
