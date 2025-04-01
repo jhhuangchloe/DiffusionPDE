@@ -15,5 +15,5 @@ generate:
   sigma_max: 80
   rho: 7
   zeta_obs_a: 0
-  zeta_obs_u: 2000
+  zeta_obs_u: 3000
   zeta_pde: 100
