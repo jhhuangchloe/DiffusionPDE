@@ -29,6 +29,10 @@ def get_poisson_loss(a, u, a_GT, u_GT, a_mask, u_mask, device=torch.device('cuda
            u_padded[:, :, 1:-1, :-2] + u_padded[:, :, 1:-1, 2:] - 4 * u[:, :, :, :]) / h**2
     pde_loss = d2u - a
     pde_loss = pde_loss.squeeze()
+    pde_loss[0, :] = 0
+    pde_loss[-1, :] = 0
+    pde_loss[:, 0] = 0
+    pde_loss[:, -1] = 0
     
     a_GT = a_GT.view(1, 1, S, S)
     u_GT = u_GT.view(1, 1, S, S)
@@ -103,12 +107,12 @@ def generate_poisson(config):
         # Scale the data back
         a_N = x_N[:,0,:,:].unsqueeze(0)
         u_N = x_N[:,1,:,:].unsqueeze(0)
-        a_N = (a_N*2.5).to(torch.float64)
+        a_N = (a_N*2.15).to(torch.float64)
         u_N = (u_N/36.5).to(torch.float64)
         
         # Compute the loss
         pde_loss, observation_loss_a, observation_loss_u = get_poisson_loss(a_N, u_N, a_GT, u_GT, known_index_a, known_index_u, device=device)
-        L_pde = torch.norm(pde_loss, 2)/(128*128)
+        L_pde = torch.norm(pde_loss, 2)/(127*127)
         L_obs_a = torch.norm(observation_loss_a, 2)
         L_obs_u = torch.norm(observation_loss_u, 2)
         grad_x_cur_obs_a = torch.autograd.grad(outputs=L_obs_a, inputs=x_cur, retain_graph=True)[0]
@@ -126,7 +130,7 @@ def generate_poisson(config):
     x_final = x_next
     a_final = x_final[:,0,:,:].unsqueeze(0)
     u_final = x_final[:,1,:,:].unsqueeze(0)
-    a_final = (a_final*2.5).to(torch.float64)
+    a_final = (a_final*2.15).to(torch.float64)
     u_final = (u_final/36.5).to(torch.float64)
     relative_error_a = torch.norm(a_final - a_GT, 2) / torch.norm(a_GT, 2)
     relative_error_u = torch.norm(u_final - u_GT, 2) / torch.norm(u_GT, 2)
