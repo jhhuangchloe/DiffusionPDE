@@ -73,9 +73,9 @@ To recover the solution throughout a time interval with sparse sensors, use, e.g
 python3 generate_pde.py --config configs/burgers.yaml
 ```
 
-## Guidance on Guidance Weights
+## Additional Guidance
 
-Weights may change depending on the count of observation points. A significant weight can swiftly decrease the error, but an excessively large weight might cause oversaturation and artifacts. Typically, the weights for forward observation loss terms range from 0.1 to 10 before averaging. The weights of various loss terms associated with the same PDE are affected by the scaling of these loss terms.
+Please note that guidance weights could significantly influence the results. Weights may change depending on the count of observation points. A significant weight can swiftly decrease the error, but an excessively large weight might cause oversaturation and artifacts. Typically, the weights for forward observation loss terms range from 0.1 to 10 before averaging the number of observation points. The weights of various loss terms associated with the same PDE are affected by the scaling of these loss terms. Also, the diffusion model may be stochastic with different seeds, as demonstrated in Appendix K.
 
 ## License
 
